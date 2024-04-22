@@ -19,7 +19,7 @@ function RepoList() {
 
   const fetchRepos = async () => {
     const response = await fetch(
-      https://api.github.com/users/korede1004/repos?page=${page}&per_page=100
+      `https://api.github.com/users/korede1004/repos?page=${page}&per_page=100`
     );
     const data = await response.json();
     setRepos((prevRepos) => [...prevRepos, ...data]);
@@ -35,7 +35,7 @@ function RepoList() {
       <h1>Korede GitHub Repositories</h1>
       {repos.map((repo) => (
         <p key={repo.id}>
-          <Link to={/repo/${repo.name}}>{repo.name}</Link>
+          <Link to={`/repo/${repo.name}`}>{repo.name}</Link>
         </p>
       ))}
       <button onClick={fetchRepos}>Load more</button>
@@ -48,7 +48,7 @@ function Repo() {
   const [repo, setRepo] = useState(null);
 
   useEffect(() => {
-    fetch(https://api.github.com/repos/korede1004/${repoName})
+    fetch(`https://api.github.com/repos/korede1004/${repoName}`)
       .then((response) => response.json())
       .then((data) => setRepo(data))
       .catch((error) => console.error("Error:", error));
