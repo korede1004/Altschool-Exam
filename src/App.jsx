@@ -19,7 +19,7 @@ function RepoList() {
 
   const fetchRepos = async () => {
     const response = await fetch(
-      https:  //api.github.com/users/korede1004/repos?page=${page}&per_page=100
+      https://api.github.com/users/korede1004/repos?page=${page}&per_page=100
     );
     const data = await response.json();
     setRepos((prevRepos) => [...prevRepos, ...data]);
